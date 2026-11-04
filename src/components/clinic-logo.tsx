@@ -1,7 +1,9 @@
 import { cn } from "@/lib/utils";
 
+type ClassProp = { className?: string | undefined };
+
 /** Clinic logo mark: a heart-and-pulse emblem in a teal field. */
-export function ClinicMark({ className }: { className?: string }) {
+export function ClinicMark({ className }: ClassProp) {
   return (
     <svg viewBox="0 0 48 48" fill="none" className={cn("h-10 w-10", className)} aria-hidden="true">
       <rect x="1.5" y="1.5" width="45" height="45" rx="14" className="fill-teal-mist" />
@@ -22,7 +24,7 @@ export function ClinicMark({ className }: { className?: string }) {
   );
 }
 
-export function ClinicLogo({ className, invert = false }: { className?: string; invert?: boolean }) {
+export function ClinicLogo({ className, invert = false }: ClassProp & { invert?: boolean }) {
   return (
     <span className={cn("flex items-center gap-3", className)}>
       <ClinicMark className={invert ? "h-10 w-10 text-teal-soft" : undefined} />
