@@ -15,7 +15,7 @@ const labelClass = "mb-1.5 block text-xs font-semibold uppercase tracking-wider 
  */
 export function AppointmentForm({ className }: { className?: string }) {
   const [form, setForm] = useState({ name: "", phone: "", date: "", time: "", concern: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<{ name?: string; phone?: string; date?: string }>({});
   const [sent, setSent] = useState(false);
 
   const set = (key: keyof typeof form) => (
@@ -24,7 +24,7 @@ export function AppointmentForm({ className }: { className?: string }) {
 
   function submit(e: FormEvent) {
     e.preventDefault();
-    const next: Record<string, string> = {};
+    const next: { name?: string; phone?: string; date?: string } = {};
     if (form.name.trim().length < 2) next.name = "Please share the patient's name.";
     if (!/^[+\d][\d\s-]{7,15}$/.test(form.phone.trim()))
       next.phone = "Please enter a valid phone number.";
